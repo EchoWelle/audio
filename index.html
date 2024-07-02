@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoWelle</title>
+    <style>
+        /* Allgemeine Stile für den gesamten Body */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f0f0; /* Hintergrundfarbe des Body */
+            color: #333; /* Textfarbe */
+        }
+
+        /* Stile für den Hauptinhalt (Zentriert) */
+        .content {
+            max-width: 600px; /* Maximale Breite des Inhalts */
+            margin: 0 auto; /* Zentrierung des Inhalts */
+            padding: 20px;
+            background-color: #fff; /* Hintergrundfarbe des Inhalts */
+            border-radius: 8px; /* Abgerundete Ecken */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatten um den Inhalt */
+        }
+
+        /* Stile für den Header (Titel) */
+        h1 {
+            color: #007bff; /* Blaue Farbe für den Titel */
+            margin-bottom: 20px; /* Abstand unter dem Titel */
+        }
+
+        /* Stile für die Audio-Wiedergabe */
+        audio {
+            margin-top: 20px;
+            width: 100%; /* Volle Breite des Containers */
+            outline: none; /* Entfernt die Standardumrandung */
+        }
+
+        /* Stile für die Zeit- und Sendungsinfo */
+        #currentTime, #currentShowInfo {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Medienabfragen für responsives Design */
+        @media (max-width: 768px) {
+            .content {
+                padding: 10px; /* Verringert den Innenabstand auf kleinen Bildschirmen */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>EchoWelle</h1>
+        <div id="currentTime"></div>
+        <div id="currentShowInfo"></div>
+        <audio id="audioPlayer" controls>
+            <source src="02.06.24.12uhr.mp3" type="audio/mpeg">
+            Dein Browser unterstützt kein HTML5 Audio.
+        </audio>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            updateCurrentTime();
+            updateShowInfo();
+        });
+
+        // Funktion zur Aktualisierung der aktuellen Uhrzeit
+        function updateCurrentTime() {
+            const currentDate = new Date();
+            const currentTimeElement = document.getElementById('currentTime');
+            const formattedTime = currentDate.toLocaleTimeString('de-DE', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+            currentTimeElement.textContent = `Aktuelle Uhrzeit: ${formattedTime}`;
+            setTimeout(updateCurrentTime, 1000); // Aktualisiere jede Sekunde
+        }
+
+        // Funktion zur Anzeige der aktuellen Sendung
+        function updateShowInfo() {
+            const currentShowInfoElement = document.getElementById('currentShowInfo');
+            const currentShow = "Sendung vom Dienstag um 12:00 Uhr"; // Hier den Sendungstitel einfügen
+            currentShowInfoElement.textContent = currentShow;
+        }
+    </script>
+</body>
+</html>
