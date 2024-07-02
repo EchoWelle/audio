@@ -73,7 +73,7 @@
             const currentDate = new Date();
             const currentTimeElement = document.getElementById('currentTime');
             const formattedTime = currentDate.toLocaleTimeString('de-DE', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
-            currentTimeElement.textContent = `Aktuelle Uhrzeit: ${formattedTime}`;
+            currentTimeElement.textContent = `${formattedTime}`;
             setTimeout(updateCurrentTime, 1000); // Aktualisiere jede Sekunde
         }
 
